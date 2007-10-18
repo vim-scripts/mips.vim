@@ -1,0 +1,5 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2045
+
+Frankly, I wasn't happy with the state of MIPS highlighting, so this script attempts to correct this.  It recognizes the entire set of MIPS instructions and directives, as well as all registers (be they aliased ($s0), directly numerical ($16), or an FP register ($f0)), correct MIPS comment style, and label declarations.
+
+If you have any problems, I invite you to contact me and report them.  Enjoy!
