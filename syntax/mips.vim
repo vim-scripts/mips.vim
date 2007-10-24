@@ -14,7 +14,7 @@ syntax case match
 
 syntax match mipsComment /#.*/
 syntax match mipsNumber /\<[-]\?\d\+\>/ " Decimal numbers
-syntax match mipsNumber /\<-\?0\(x\|X\)\d\+\>/ " Hex numbers
+syntax match mipsNumber /\<-\?0\(x\|X\)[0-9a-fA-F]\+\>/ " Hex numbers
 syntax region mipsString start=/"/ skip=/\\"/ end=/"/
 syntax match mipsLabelColon /:/ contained
 syntax match mipsLabel /\w\+:/ contains=mipsLabelColon
@@ -52,12 +52,14 @@ syntax match mipsRegister "\$sp"
 syntax match mipsRegister "\$fp"
 syntax match mipsRegister "\$ra"
 
-for i in range(0, 31)
+let i = 0
+while i < 32
     " This is for the regular registers
     execute 'syntax match mipsRegister "\$' . i . '\(\d\+\)\@!"'
     " And this is for the FP registers
     execute 'syntax match mipsRegister "\$f' . i . '\(\d\+\)\@!"'
-endfor
+    let i = i + 1
+endwhile
 
 " Directives
 syntax match mipsDirective "\.2byte"
